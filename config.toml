@@ -1,0 +1,9 @@
+baseurl = "https://rovista.github.io"
+title = "RoVista"  
+languageCode = "en-us"
+publishDir = "docs"
+disableKinds=["RSS"]
+enableGitInfo = "True"
+[markup.goldmark.renderer]
+unsafe = true
+
