@@ -36,6 +36,17 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
 
+
+<script>
+$.getJSON('data/overview.json', function (response) {
+  $('#my-table').dynatable({
+  dataset: {
+    records: response
+  },
+
+});
+});
+</script>
   <body class="container">
     <nav class="container-fluid navbar navbar-default">
   <div class="navbar-header">
