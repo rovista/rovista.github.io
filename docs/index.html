@@ -21,9 +21,15 @@
     
 
     <noscript>
-      <link rel="stylesheet" type="text/css" href="./css/noscript.css">
+     <link rel="stylesheet" type="text/css" href="./css/noscript.css">
     </noscript>
-  </head>
+    <link rel="stylesheet" media="all" href="https://s3.amazonaws.com/dynatable-docs-assets/css/bootstrap-2.3.2.min.css" />
+    
+    <link rel="stylesheet" media="all" href="https://s3.amazonaws.com/dynatable-docs-assets/css/jquery.dynatable.css" />
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
+
   <body class="container">
     <nav class="container-fluid navbar navbar-default">
   <div class="navbar-header">
@@ -38,6 +44,7 @@
   <div class="collapse navbar-collapse" id="navbar-collapse">
     <ul class="nav navbar-nav">
         <li class="active"><a href="/">Home</a></li>
+        <li><a href="/contacts/">Contacts</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
     </ul>
@@ -54,47 +61,27 @@
 </noscript>
 
     <main class="container-fluid">
-      <script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101238267);</script>
-<script async src="//static.getclicky.com/js"></script>
-<p><noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101238267ns.gif" /></p></noscript></p>
-<div class="jumbotron">
-      <div class="container">
-<pre><code>      &lt;h2 align='right'&gt;&lt;br&gt;A Longitudinal and Comprehensive Study of the DANE Ecosystem in Email&lt;/h2&gt;
-    &lt;h3 align='right'&gt;
-        &lt;a href=&quot;https://mmlab.snu.ac.kr/~hmlee/&quot;&gt;Hyeonmin Lee&lt;sup&gt;†&lt;/sup&gt;&lt;/a&gt;,
-        &lt;a href=&quot;https://anikethgireesh.me/&quot;&gt;Aniketh Girish&lt;sup&gt;*&lt;/sup&gt;&lt;/a&gt;,
-        &lt;a href=&quot;https://wwwhome.ewi.utwente.nl/~rijswijkrm/&quot;&gt;Roland van Rijswijk-Deij&lt;sup&gt;‡&lt;/sup&gt;&lt;/a&gt;,&lt;br&gt;
-        &lt;a href=&quot;https://mmlab.snu.ac.kr/~tk/&quot;&gt;Taekyoung &quot;Ted&quot; Kwon&lt;sup&gt;†&lt;/sup&gt;&lt;/a&gt;,
-        &lt;a href=&quot;https://taejoong.github.io&quot;&gt;Taejoong &quot;Tijay&quot; Chung&lt;sup&gt;§&lt;/sup&gt;&lt;/a&gt;,
-    &lt;/h3&gt;
-    &lt;h5 align='right'&gt;
-        &lt;sup&gt;†&lt;/sup&gt;Seoul National University,
-        &lt;sup&gt;*&lt;/sup&gt;Amrita Vishwa Vidyapeetham,&lt;br&gt;
-        &lt;sup&gt;‡&lt;/sup&gt;NLNetLabs and University of Twente,
-        &lt;sup&gt;§&lt;/sup&gt;Virginia Tech 
-    &lt;/h5&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-<h1 id="about-this-study">About This Study</h1>
-<p>The DNS-based Authentication of Named Entities (DANE) standard allows clients and servers to establish a TLS connection without relying on trusted third parties like CAs by publishing Transport Layer Security Authentication (TLSA) records. DANE uses the Domain Name System’s Security Extensions (DNSSEC) PKI to achieve the integrity and authenticity. However, DANE can only work correctly if each of the principals in its PKI properly performs its duty: through their DNSSEC-aware DNS servers, DANE servers (e.g., SMTP servers) must publish their TLSA records, which are consistent with their certificates. Similarly, DANE clients (e.g., SMTP clients) must verify the DANE servers’ TLSA records, which are also used to validate the fetched certificates.
-This paper performs a large-scale, longitudinal, and comprehensive measurement study on how well the DANE standard and its relevant protocols are deployed and managed. We collect the dataset from all the second-level domains under .com, .org, .net, .nl, and .se TLDs over a period of 24 months to analyze the server-side deployment and management. For the client-side deployment and management analysis, we investigated 30 popular email service providers, and four popular MTA and 10 DNS software programs.
-Our study reveals the prevalent mismanagement in the DANE ecosystem. For instance, we found that 36% of TLSA records cannot be validated due to missing or incorrect DNSSEC records, and 14.17% of them are inconsistent with their certificates. We also found that only four email service providers support DANE for both outgoing and incoming emails, but two of them have drawbacks of not checking Certificate Usage in TLSA records. On the bright side, the administrators of email servers can leverage open source MTA and DNS programs to support DANE correctly.</p>
-<h1 id="about-the-artifacts">About the Artifacts</h1>
-<p>The artifacts are largely composed of the two parts:</p>
-<ul>
-<li>
-<p>Server-side artifacts, which focus on (1) how we collect the data (i.e., measurement codes), (2) how we analyze the collected data (i.e., analysis codes) &mdash; Section 4 and 5 in the paper.</p>
-</li>
-<li>
-<p>Client-side artifacts, which focus on (1) how we infer the mail server provider&rsquo;s DANE policy. &mdash; Section 6 in the paper.</p>
-</li>
-</ul>
-<p><b><center> This paper will be published at USENIX Security'20 and has passed the artifact evaluation process.</b></center>
-<b><center> The paper has been updated and is available <a href="https://taejoong.github.io/pubs/publications/lee-2020-dane.pdf">here</a></b></center></p>
-<h1 id="about-criticism">About Criticism</h1>
-<p>After the paper was published, we have received many feedback from the DANE community; especially, the two authors of RFC7671, Viktor Dukhovni and Wes Hardaker, helped us a lot improve the quality of the paper. Our response is available <a href="https://dane-study.github.io/criticism/">here</a>.</p>
-<div><center><img src="figure/usenix_artifact_evaluation_passed_new.png"></div></center>
+      <h1 id="about-this-study">About This Study</h1>
+<table id="my-table" class="table table-striped table-bordered">
+    <thead>
+        <th>Rank</th>
+        <th>ASN</th>
+        <th data-dynatable-column="organization">Organization</th>
+        <th data-dynatable-column="ratio">ROV-Ratio</th>
+    </thead>
+<tbody>
+</tbody>
+</table>
+<script>
+$.getJSON('data/overview.json', function (response) {
+  $('#my-table').dynatable({
+  dataset: {
+    records: response
+  },
+
+});
+});
+</script>
 
     </main>
     <footer class="container-fluid page-footer" style="display: flex; align-items: center">
@@ -123,5 +110,6 @@ Analytics"></a></div></noscript>
     
     <script src="js/bootstrap.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/jquery.dynatable.js"></script>
   </body>
 </html>
