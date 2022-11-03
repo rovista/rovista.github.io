@@ -27,6 +27,13 @@
     
     <link rel="stylesheet" media="all" href="https://s3.amazonaws.com/dynatable-docs-assets/css/jquery.dynatable.css" />
 
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
 
@@ -61,7 +68,8 @@
 </noscript>
 
     <main class="container-fluid">
-      <h1 id="about-this-study">About This Study</h1>
+      <h1 id="overview-of-rov-filtering-ratio">Overview of ROV Filtering Ratio</h1>
+<div><div>
 <table id="my-table" class="table table-striped table-bordered">
     <thead>
         <th>Rank</th>
@@ -72,6 +80,7 @@
 <tbody>
 </tbody>
 </table>
+
 <script>
 $.getJSON('data/overview.json', function (response) {
   $('#my-table').dynatable({
@@ -82,6 +91,134 @@ $.getJSON('data/overview.json', function (response) {
 });
 });
 </script>
+</div>
+</div>
+<h2 id="as-specific-rov-filtering-ratio">AS-Specific ROV Filtering Ratio</h2>
+<div><div>
+<figure class="highcharts-figure">
+    <div id="container"></div>
+    <p class="highcharts-description">
+    </p>
+</figure>
+
+
+<script>
+Highcharts.chart('container', {
+
+    chart: {
+        scrollablePlotArea: {
+            minWidth: 700
+        }
+    },
+
+    data: {
+        csvURL: './data/asn/3356.csv',
+        beforeParse: function (csv) {
+            return csv.replace(/\n\n/g, '\n');
+        },
+        seriesMapping: [{
+                x:0,
+                y:1
+            },{
+                x:0,
+                y:4
+            },
+        ]
+    },
+
+    title: {
+        text: 'AS 3356'
+    },
+
+    subtitle: {
+        text: 'ROV Filtering Ratio'
+    },
+
+    xAxis: {
+        tickWidth: 0,
+        gridLineWidth: 1,
+        labels: {
+            align: 'left',
+            x: 3,
+            y: -3
+        }
+    },
+
+    yAxis: [{ 
+        title: {
+            text: "# of Targets"
+        },
+        labels: {
+            align: 'left',
+            x: 3,
+            y: 16,
+            format: '{value:.,0f}'
+        },
+        showFirstLabel: false
+    }, { 
+        gridLineWidth: 0,
+        opposite: true,
+        max: 1,
+        min: 0,
+        title: {
+            text: "ROV Ratio (%)"
+        },
+        labels: {
+            align: 'right',
+            x: -3,
+            y: 16,
+            format: '{value:.,0f}'
+        },
+    }],
+
+    legend: {
+        align: 'left',
+        verticalAlign: 'top',
+        borderWidth: 0
+    },
+
+    tooltip: {
+        shared: true,
+        crosshairs: true
+    },
+
+    plotOptions: {
+        series: {
+            cursor: 'pointer',
+            className: 'popup-on-click',
+            marker: {
+                lineWidth: 1
+            }
+        }
+    },
+
+    series: [{ 
+            type: 'line',
+            yAxis: 0,
+            lineWidth: 3,
+            marker: {
+                radius: 3
+            }
+        },
+        { 
+                name: "s",
+            type: 'line',
+            yAxis: 1,
+            marker: {
+                radius: 3
+            }
+        },
+    {
+            visible:false
+        },
+    {
+            visible:false
+        }
+    ]
+});
+</script>
+</div>
+</div>
 
     </main>
     <footer class="container-fluid page-footer" style="display: flex; align-items: center">
