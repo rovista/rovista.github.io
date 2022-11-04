@@ -17,7 +17,10 @@ The detail information of vantage points we used for the measurement will be ava
 <div>{{< overview >}}</div>
 
 ## AS-Specific ROV Filtering Ratio
-
+<div class="alert alert-primary">
+<p><b>"Total"</b> indicates the number of invalid prefixes we have tested to measure whether the AS is reachable or not. <br>
+<b>"Ratio"</b> indicates the ratio of the invalid prefixes that the AS is reachable.
+</div>
 <div>{{< asgraph >}}</div>
 
 
