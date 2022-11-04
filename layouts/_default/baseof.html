@@ -22,19 +22,15 @@
     <![endif]-->
     {{ if not .Site.BuildDrafts }}{{ template "_internal/google_analytics.html" . }}{{ end }}
 
-    <noscript>
-     <link rel="stylesheet" type="text/css" href="./css/noscript.css">
-    </noscript>
-    <link rel="stylesheet" media="all" href="https://s3.amazonaws.com/dynatable-docs-assets/css/bootstrap-2.3.2.min.css" />
     <!-- Plugin styles -->
     <link rel="stylesheet" media="all" href="https://s3.amazonaws.com/dynatable-docs-assets/css/jquery.dynatable.css" />
 
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/data.js"></script>
-<script src="https://code.highcharts.com/modules/series-label.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
-<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="js/highcharts.js"></script>
+<script src="js/data.js"></script>
+<script src="js/series-label.js"></script>
+<script src="js/exporting.js"></script>
+<script src="js/export-data.js"></script>
+<script src="js/accessibility.js"></script>
 
 <!--  jQuery v3.0.0-beta1 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
@@ -50,6 +46,7 @@ $.getJSON('data/overview.json', function (response) {
 });
 });
 </script>
+
   <body class="container">
     {{ partial "nav.html" . }}
     {{ partial "header.html" . }}

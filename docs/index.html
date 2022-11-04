@@ -20,19 +20,15 @@
     
     
 
-    <noscript>
-     <link rel="stylesheet" type="text/css" href="./css/noscript.css">
-    </noscript>
-    <link rel="stylesheet" media="all" href="https://s3.amazonaws.com/dynatable-docs-assets/css/bootstrap-2.3.2.min.css" />
     
     <link rel="stylesheet" media="all" href="https://s3.amazonaws.com/dynatable-docs-assets/css/jquery.dynatable.css" />
 
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/data.js"></script>
-<script src="https://code.highcharts.com/modules/series-label.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
-<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="js/highcharts.js"></script>
+<script src="js/data.js"></script>
+<script src="js/series-label.js"></script>
+<script src="js/exporting.js"></script>
+<script src="js/export-data.js"></script>
+<script src="js/accessibility.js"></script>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
@@ -48,6 +44,7 @@ $.getJSON('data/overview.json', function (response) {
 });
 });
 </script>
+
   <body class="container">
     <nav class="container-fluid navbar navbar-default">
   <div class="navbar-header">
@@ -57,7 +54,7 @@ $.getJSON('data/overview.json', function (response) {
     <span class="icon-bar">&nbsp;</span>
     <span class="icon-bar">&nbsp;</span>
     </button>
-    <a class="navbar-brand" href="#">DANE Study</a>
+    <a class="navbar-brand" href="#">RoVista</a>
   </div>
   <div class="collapse navbar-collapse" id="navbar-collapse">
     <ul class="nav navbar-nav">
@@ -69,7 +66,9 @@ $.getJSON('data/overview.json', function (response) {
   </div>
 </nav>
 
-    
+    <header class="page-header">
+	<img class="img-responsive" src="img/header-imc2019.png" alt="">
+</header>
 
     
     <noscript>
@@ -80,7 +79,14 @@ $.getJSON('data/overview.json', function (response) {
 
     <main class="container-fluid">
       <h1 id="overview-of-rov-filtering-ratio">Overview of ROV Filtering Ratio</h1>
-<div><div>
+<div><style>
+.btn:hover {
+color: #fff !important;
+text-decoration: none;
+}
+</style>
+
+<div>
 <table id="my-table" class="table table-striped table-bordered">
     <thead>
         <th>Rank</th>
@@ -104,144 +110,139 @@ $.getJSON('data/overview.json', function (response) {
 
 
 <script>
-Highcharts.chart('container', {
 
-    chart: {
-        scrollablePlotArea: {
-            minWidth: 700
-        }
-    },
-
-    data: {
-        csvURL: './data/asn/3356.csv',
-        beforeParse: function (csv) {
-            return csv.replace(/\n\n/g, '\n');
-        },
-        seriesMapping: [{
-                x:0,
-                y:1
-            },{
-                x:0,
-                y:4
-            },
-        ]
-    },
-
-    title: {
-        text: 'AS 3356'
-    },
-
-    subtitle: {
-        text: 'ROV Filtering Ratio'
-    },
-
-    xAxis: {
-        tickWidth: 0,
-        gridLineWidth: 1,
-        labels: {
-            align: 'left',
-            x: 3,
-            y: -3
-        }
-    },
-
-    yAxis: [{ 
-        title: {
-            text: "# of Targets"
-        },
-        labels: {
-            align: 'left',
-            x: 3,
-            y: 16,
-            format: '{value:.,0f}'
-        },
-        showFirstLabel: false
-    }, { 
-        gridLineWidth: 0,
-        opposite: true,
-        max: 1,
-        min: 0,
-        title: {
-            text: "ROV Ratio (%)"
-        },
-        labels: {
-            align: 'right',
-            x: -3,
-            y: 16,
-            format: '{value:.,0f}'
-        },
-    }],
-
-    legend: {
-        align: 'left',
-        verticalAlign: 'top',
-        borderWidth: 0
-    },
-
-    tooltip: {
-        shared: true,
-        crosshairs: true
-    },
-
-    plotOptions: {
-        series: {
-            cursor: 'pointer',
-            className: 'popup-on-click',
-            marker: {
-                lineWidth: 1
-            }
-        }
-    },
-
-    series: [{ 
-            type: 'line',
-            yAxis: 0,
-            lineWidth: 3,
-            marker: {
-                radius: 3
-            }
-        },
-        { 
-                name: "s",
-            type: 'line',
-            yAxis: 1,
-            marker: {
-                radius: 3
-            }
-        },
-    {
-            visible:false
-        },
-    {
-            visible:false
-        }
-    ]
+$('#nmbUpdate').bind('click', function() {
+        my(e);
 });
+
+function my(ASN){
+    console.log('fker');
+    Highcharts.chart('container', {
+
+        chart: {
+            scrollablePlotArea: {
+                minWidth: 700
+            }
+        },
+
+        data: {
+            csvURL: './data/asn/' + ASN + '.csv',
+            beforeParse: function (csv) {
+                return csv.replace(/\n\n/g, '\n');
+            },
+            seriesMapping: [{
+                    x:0,
+                    y:1
+                },{
+                    x:0,
+                    y:4
+                },
+            ]
+        },
+
+        title: {
+            text: 'AS ' + ASN
+        },
+
+        subtitle: {
+            text: 'ROV Filtering Ratio'
+        },
+
+        xAxis: {
+            tickWidth: 0,
+            gridLineWidth: 1,
+            labels: {
+                align: 'left',
+                x: 3,
+                y: -3
+            }
+        },
+
+        yAxis: [{ 
+            title: {
+                text: "# of Targets"
+            },
+            labels: {
+                align: 'left',
+                x: 3,
+                y: 16,
+                format: '{value:.,0f}'
+            },
+            showFirstLabel: false
+        }, { 
+            gridLineWidth: 0,
+            opposite: true,
+            max: 1,
+            min: 0,
+            title: {
+                text: "ROV Ratio (%)"
+            },
+            labels: {
+                align: 'right',
+                x: -3,
+                y: 16,
+                format: '{value:.,0f}'
+            },
+        }],
+
+        legend: {
+            align: 'left',
+            verticalAlign: 'top',
+            borderWidth: 0
+        },
+
+        tooltip: {
+            shared: true,
+            crosshairs: true
+        },
+
+        plotOptions: {
+            series: {
+                cursor: 'pointer',
+                className: 'popup-on-click',
+                marker: {
+                    lineWidth: 1
+                }
+            }
+        },
+
+        series: [{ 
+                type: 'line',
+                yAxis: 0,
+                lineWidth: 3,
+                marker: {
+                    radius: 3
+                }
+            },
+            { 
+                    name: "s",
+                type: 'line',
+                yAxis: 1,
+                marker: {
+                    radius: 3
+                }
+            },
+        {
+                visible:false
+            },
+        {
+                visible:false
+            }
+        ]
+    });
+}
+
 </script>
+
 </div>
 </div>
 
     </main>
     <footer class="container-fluid page-footer" style="display: flex; align-items: center">
+  
 </footer>
 
     
-<script type="text/javascript">
-var sc_project=11603023; 
-var sc_invisible=1; 
-var sc_security="a906280a"; 
-var scJsHost = (("https:" == document.location.protocol) ?
-"https://secure." : "http://www.");
-document.write("<sc"+"ript type='text/javascript' src='" +
-scJsHost+
-"statcounter.com/counter/counter.js'></"+"script>");
-</script>
-<noscript><div class="statcounter"><a title="Web Analytics"
-href="http://statcounter.com/" target="_blank"><img
-class="statcounter"
-src="//c.statcounter.com/11603023/0/a906280a/1/" alt="Web
-Analytics"></a></div></noscript>
-
 
     
     <script src="js/jquery.1.12.4.min.js"></script>

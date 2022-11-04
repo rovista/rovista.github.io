@@ -5,120 +5,133 @@
     </p>
 </figure>
 
-
+<!-- 
+<button onClick="my(3356)">Click me3357!</button>
+<button onClick="my(7792)">Click me7792!</button>
+-->
 <script>
-Highcharts.chart('container', {
 
-    chart: {
-        scrollablePlotArea: {
-            minWidth: 700
-        }
-    },
-
-    data: {
-        csvURL: './data/asn/3356.csv',
-        beforeParse: function (csv) {
-            return csv.replace(/\n\n/g, '\n');
-        },
-        seriesMapping: [{
-                x:0,
-                y:1
-            },{
-                x:0,
-                y:4
-            },
-        ]
-    },
-
-    title: {
-        text: 'AS 3356'
-    },
-
-    subtitle: {
-        text: 'ROV Filtering Ratio'
-    },
-
-    xAxis: {
-        tickWidth: 0,
-        gridLineWidth: 1,
-        labels: {
-            align: 'left',
-            x: 3,
-            y: -3
-        }
-    },
-
-    yAxis: [{ // left y axis
-        title: {
-            text: "# of Targets"
-        },
-        labels: {
-            align: 'left',
-            x: 3,
-            y: 16,
-            format: '{value:.,0f}'
-        },
-        showFirstLabel: false
-    }, { // right y axis
-        gridLineWidth: 0,
-        opposite: true,
-        max: 1,
-        min: 0,
-        title: {
-            text: "ROV Ratio (%)"
-        },
-        labels: {
-            align: 'right',
-            x: -3,
-            y: 16,
-            format: '{value:.,0f}'
-        },
-    }],
-
-    legend: {
-        align: 'left',
-        verticalAlign: 'top',
-        borderWidth: 0
-    },
-
-    tooltip: {
-        shared: true,
-        crosshairs: true
-    },
-
-    plotOptions: {
-        series: {
-            cursor: 'pointer',
-            className: 'popup-on-click',
-            marker: {
-                lineWidth: 1
-            }
-        }
-    },
-
-    series: [{ // first series
-            type: 'line',
-            yAxis: 0,
-            lineWidth: 3,
-            marker: {
-                radius: 3
-            }
-        },
-        { // second series
-                name: "s",
-            type: 'line',
-            yAxis: 1,
-            marker: {
-                radius: 3
-            }
-        },
-    {
-            visible:false
-        },
-    {
-            visible:false
-        }
-    ]
+$('#nmbUpdate').bind('click', function() {
+        my(e);
 });
+
+function my(ASN){
+    console.log('fker');
+    Highcharts.chart('container', {
+
+        chart: {
+            scrollablePlotArea: {
+                minWidth: 700
+            }
+        },
+
+        data: {
+            csvURL: './data/asn/' + ASN + '.csv',
+            beforeParse: function (csv) {
+                return csv.replace(/\n\n/g, '\n');
+            },
+            seriesMapping: [{
+                    x:0,
+                    y:1
+                },{
+                    x:0,
+                    y:4
+                },
+            ]
+        },
+
+        title: {
+            text: 'AS ' + ASN
+        },
+
+        subtitle: {
+            text: 'ROV Filtering Ratio'
+        },
+
+        xAxis: {
+            tickWidth: 0,
+            gridLineWidth: 1,
+            labels: {
+                align: 'left',
+                x: 3,
+                y: -3
+            }
+        },
+
+        yAxis: [{ // left y axis
+            title: {
+                text: "# of Targets"
+            },
+            labels: {
+                align: 'left',
+                x: 3,
+                y: 16,
+                format: '{value:.,0f}'
+            },
+            showFirstLabel: false
+        }, { // right y axis
+            gridLineWidth: 0,
+            opposite: true,
+            max: 1,
+            min: 0,
+            title: {
+                text: "ROV Ratio (%)"
+            },
+            labels: {
+                align: 'right',
+                x: -3,
+                y: 16,
+                format: '{value:.,0f}'
+            },
+        }],
+
+        legend: {
+            align: 'left',
+            verticalAlign: 'top',
+            borderWidth: 0
+        },
+
+        tooltip: {
+            shared: true,
+            crosshairs: true
+        },
+
+        plotOptions: {
+            series: {
+                cursor: 'pointer',
+                className: 'popup-on-click',
+                marker: {
+                    lineWidth: 1
+                }
+            }
+        },
+
+        series: [{ // first series
+                type: 'line',
+                yAxis: 0,
+                lineWidth: 3,
+                marker: {
+                    radius: 3
+                }
+            },
+            { // second series
+                    name: "s",
+                type: 'line',
+                yAxis: 1,
+                marker: {
+                    radius: 3
+                }
+            },
+        {
+                visible:false
+            },
+        {
+                visible:false
+            }
+        ]
+    });
+}
+
 </script>
+
 </div>
