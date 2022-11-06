@@ -1,9 +1,10 @@
-<div>
+<div id = "highcharts">
 <figure class="highcharts-figure">
     <div id="container"></div>
     <p class="highcharts-description">
     </p>
 </figure>
+</div>
 
 <!-- 
 <button onClick="my(3356)">Click me3357!</button>
@@ -11,12 +12,11 @@
 -->
 <script>
 
-$('#nmbUpdate').bind('click', function() {
-        my(e);
-});
 
 function my(ASN){
-    console.log('fker');
+    $('html,body').animate({
+        scrollTop: $("#highcharts").offset().top},
+    'slow');
     Highcharts.chart('container', {
 
         chart: {
