@@ -107,22 +107,22 @@ text-decoration: none;
 <p><b>"Total"</b> indicates the number of invalid prefixes we have tested to measure whether the AS is reachable or not. <br>
 <b>"Ratio"</b> indicates the ratio of the invalid prefixes that the AS is reachable.
 </div>
-<div><div>
+<div><div id = "highcharts">
 <figure class="highcharts-figure">
     <div id="container"></div>
     <p class="highcharts-description">
     </p>
 </figure>
+</div>
 
 
 <script>
 
-$('#nmbUpdate').bind('click', function() {
-        my(e);
-});
 
 function my(ASN){
-    console.log('fker');
+    $('html,body').animate({
+        scrollTop: $("#highcharts").offset().top},
+    'slow');
     Highcharts.chart('container', {
 
         chart: {
