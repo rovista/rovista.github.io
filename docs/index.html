@@ -11,9 +11,9 @@
     <base href="https://rovista.netsecurelab.org">
     
     
+    <link rel="stylesheet" media="all" href="https://s3.amazonaws.com/dynatable-docs-assets/css/jquery.dynatable.css" />
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/my.css" rel="stylesheet">
-
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700" rel="stylesheet">
     
     
@@ -22,9 +22,8 @@
     
 
     
-    <link rel="stylesheet" media="all" href="https://s3.amazonaws.com/dynatable-docs-assets/css/jquery.dynatable.css" />
 
-    <script src="js/highcharts.js"></script>
+<script src="js/highcharts.js"></script>
 <script src="js/data.js"></script>
 <script src="js/series-label.js"></script>
 <script src="js/exporting.js"></script>
@@ -32,7 +31,14 @@
 <script src="js/accessibility.js"></script>
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
+
+<style>
+.btn:hover {
+color: #fff !important;
+text-decoration: none;
+}
+</style>
 
 
 <script>
@@ -106,14 +112,7 @@ function tableAppear(date, ASN){
 <p>The table below shows the ROV filtering Ratio based on our most-recent snapshots. Please click the ASN to see its historical pattern of ROV Ratio.</p>
 <p>The detail information of vantage points we used for the measurement will be available soon.</p>
 <h2 id="overview-of-rov-filtering-ratio">Overview of ROV Filtering Ratio</h2>
-<div><style>
-.btn:hover {
-color: #fff !important;
-text-decoration: none;
-}
-</style>
-
-<div>
+<div><div>
 <table id="my-table" class="table table-striped table-bordered">
     <thead>
         <th>Rank</th>
@@ -144,7 +143,8 @@ text-decoration: none;
 <table id="tnodes-table" class="table table-striped table-bordered">
     <thead>
         <th>Date</th>
-        <th data-dynatable-column="target-asn">ASN</th>
+        <th data-dynatable-column="asn">Source ASN</th>
+        <th data-dynatable-column="target-asn">Destination ASN</th>
         <th data-dynatable-column="prefix">Invalid Prefix</th>
         <th data-dynatable-column="filter">Route Filtered</th>
     </thead>
