@@ -10,9 +10,9 @@
     <base href="{{ .Site.BaseURL }}">
     
     <!-- Bootstrap -->
+    <link rel="stylesheet" media="all" href="https://s3.amazonaws.com/dynatable-docs-assets/css/jquery.dynatable.css" />
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/my.css" rel="stylesheet">
-
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700" rel="stylesheet">
     
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -24,9 +24,8 @@
     {{ if not .Site.BuildDrafts }}{{ template "_internal/google_analytics.html" . }}{{ end }}
 
     <!-- Plugin styles -->
-    <link rel="stylesheet" media="all" href="https://s3.amazonaws.com/dynatable-docs-assets/css/jquery.dynatable.css" />
 
-    <script src="js/highcharts.js"></script>
+<script src="js/highcharts.js"></script>
 <script src="js/data.js"></script>
 <script src="js/series-label.js"></script>
 <script src="js/exporting.js"></script>
@@ -34,7 +33,14 @@
 <script src="js/accessibility.js"></script>
 
 <!--  jQuery v3.0.0-beta1 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
+
+<style>
+.btn:hover {
+color: #fff !important;
+text-decoration: none;
+}
+</style>
 
 
 <script>
