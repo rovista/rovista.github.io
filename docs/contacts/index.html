@@ -40,9 +40,34 @@ $.getJSON('data/overview.json', function (response) {
   dataset: {
     records: response
   },
+      });
+});
 
+function tableAppear(date, ASN){
+    tnodes.style.display = "block";
+    $('html,body').animate({
+        scrollTop: $("#tnodes").offset().top},
+    'slow');
+
+    var newDate = new Date(date);
+    console.log(newDate.toISOString().slice(0, 10));
+
+    $.getJSON('data/tnodes/asn-tnodes-' + ASN + '.json', function (response) {
+      var items = response;
+      items = response.filter(function(obj) {
+        return obj.date === newDate.toISOString().slice(0,10);
+    });
+
+  var dynatable = $('#tnodes-table').dynatable({
+      dataset: {
+        records: items
+      },
+    }).data("dynatable");
+    dynatable.settings.dataset.originalRecords =  items;
+      dynatable.process();
 });
-});
+}
+
 </script>
 
   <body class="container">
