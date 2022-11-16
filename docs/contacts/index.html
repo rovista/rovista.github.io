@@ -68,6 +68,11 @@ function tableAppear(date, ASN){
       dataset: {
         records: items
       },
+      features: {
+        search:false,
+                      paginate: false,
+
+      },
     }).data("dynatable");
     dynatable.settings.dataset.originalRecords =  items;
       dynatable.process();

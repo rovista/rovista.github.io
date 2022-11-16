@@ -69,6 +69,11 @@ function tableAppear(date, ASN){
       dataset: {
         records: items
       },
+      features: {
+        search:false,
+                      paginate: false,
+
+      },
     }).data("dynatable");
     dynatable.settings.dataset.originalRecords =  items;
       dynatable.process();
@@ -111,6 +116,7 @@ function tableAppear(date, ASN){
 <p>RoVista measures the RoV filtering ratio of network operators. This ratio is derived from our measurement technique that uses (1) in-the-wild invalid BGP Prefixes and (2) IP-ID side-channel technique. The details will be published soon.</p>
 <p>The table below shows the ROV filtering Ratio based on our most-recent snapshots. Please click the ASN to see its historical pattern of ROV Ratio.</p>
 <p>The detail information of vantage points we used for the measurement will be available soon.</p>
+<hr>
 <h2 id="overview-of-rov-filtering-ratio">Overview of ROV Filtering Ratio</h2>
 <div><div>
 <table id="my-table" class="table table-striped table-bordered">
@@ -126,12 +132,16 @@ function tableAppear(date, ASN){
 </div>
 
 </div>
+<hr>
 <h2 id="as-specific-rov-filtering-ratio">AS-Specific ROV Filtering Ratio</h2>
+<div><div id = "highcharts" style="display:none">
 <div class="alert alert-primary">
 <p><b>"Total"</b> indicates the number of invalid prefixes we have tested to measure whether the AS is reachable or not. <br>
 <b>"Ratio"</b> indicates the ratio of the invalid prefixes that the AS is reachable.
 </div>
-<div><div id = "highcharts">
+
+To see what ASNs and their RPKI-invalid prefixes we have tested, click each data point!
+
 <figure class="highcharts-figure">
     <div id="container"></div>
     <p class="highcharts-description">
@@ -139,25 +149,13 @@ function tableAppear(date, ASN){
 </figure>
 </div>
 
-<div id ="tnodes" style="display:none">
-<table id="tnodes-table" class="table table-striped table-bordered">
-    <thead>
-        <th>Date</th>
-        <th data-dynatable-column="asn">Source ASN</th>
-        <th data-dynatable-column="target-asn">Destination ASN</th>
-        <th data-dynatable-column="prefix">Invalid Prefix</th>
-        <th data-dynatable-column="filter">Route Filtered</th>
-    </thead>
-<tbody>
-</tbody>
-</table>
-</div>
 
 <script>
 function my(ASN){
     $('html,body').animate({
         scrollTop: $("#highcharts").offset().top},
     'slow');
+    highcharts.style.display = "block";
     Highcharts.chart('container', {
 
         chart: {
@@ -286,6 +284,28 @@ function my(ASN){
 
 </div>
 </div>
+<hr>
+<h2 id="details-of-rovistas-inference-results">Details of RoVISTA&rsquo;s Inference Results</h2>
+<div> 
+<div id ="tnodes" style="display:none">
+        <div class="alert alert-primary">
+        <p> The table shows the list of (Destination) ASNs and the <i>RPKI-invalid</i> IP prefixes that they announced on the specific date.
+        It also shows, based on our technique, whether the (source) ASN filtered such RPKI-invalid prefixes or not. </p>
+
+    </div>
+<table id="tnodes-table" class="table table-striped table-bordered">
+    <thead>
+        <th>Date</th>
+        <th data-dynatable-column="asn">Source ASN</th>
+        <th data-dynatable-column="target-asn">Destination ASN</th>
+        <th data-dynatable-column="prefix">Invalid Prefix</th>
+        <th data-dynatable-column="filter">Route Filtered</th>
+    </thead>
+<tbody>
+</tbody>
+</table>
+</div>
+ </div>
 
     </main>
     <footer class="container-fluid page-footer" style="display: flex; align-items: center">

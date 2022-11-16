@@ -12,16 +12,18 @@ The table below shows the ROV filtering Ratio based on our most-recent snapshots
 
 The detail information of vantage points we used for the measurement will be available soon.
 
+-----------------------
 ## Overview of ROV Filtering Ratio 
 
 <div>{{< overview >}}</div>
 
+-----------------------
 ## AS-Specific ROV Filtering Ratio
-<div class="alert alert-primary">
-<p><b>"Total"</b> indicates the number of invalid prefixes we have tested to measure whether the AS is reachable or not. <br>
-<b>"Ratio"</b> indicates the ratio of the invalid prefixes that the AS is reachable.
-</div>
 <div>{{< asgraph >}}</div>
 
 
+-----------------------
+
+## Details of RoVISTA's Inference Results
+<div> {{< tnodes >}} </div>
 
