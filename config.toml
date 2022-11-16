@@ -1,4 +1,4 @@
-baseurl = "https://rovista.github.io"
+baseurl = "https://rovista.netsecurelab.org"
 title = "RoVista"  
 languageCode = "en-us"
 publishDir = "docs"
